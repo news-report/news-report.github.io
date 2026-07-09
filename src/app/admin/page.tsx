@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { getAdminToken } from "@/lib/api";
 import AuthPanel from "@/components/admin/AuthPanel";
 import SourceManager from "@/components/admin/SourceManager";
@@ -9,7 +9,11 @@ import ItemsTable from "@/components/admin/ItemsTable";
 import adminStyles from "@/styles/admin.module.css";
 
 export default function AdminPage() {
-  const [unlocked, setUnlocked] = useState(!!getAdminToken());
+  const [unlocked, setUnlocked] = useState(false);
+
+  useEffect(() => {
+    setUnlocked(!!getAdminToken());
+  }, []);
 
   const handleUnlock = useCallback(() => setUnlocked(true), []);
 
@@ -30,7 +34,7 @@ export default function AdminPage() {
       {unlocked && (
         <>
           <SourceManager />
-          <BackfillPanel onBackfillDone={() => {}} />
+          <BackfillPanel onBackfillDone={() => { }} />
           <ItemsTable />
         </>
       )}

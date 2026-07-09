@@ -50,7 +50,7 @@ async function adminRequest<T>(
     try {
       const payload = await response.json();
       if (payload?.error) message = payload.error;
-    } catch {}
+    } catch { }
     if (response.status === 401) {
       sessionStorage.removeItem("news-report-admin-token");
     }
@@ -61,6 +61,7 @@ async function adminRequest<T>(
 }
 
 export function getAdminToken(): string {
+  if (typeof window === "undefined") return "";
   return sessionStorage.getItem("news-report-admin-token") || "";
 }
 
