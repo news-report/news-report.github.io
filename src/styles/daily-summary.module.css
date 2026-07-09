@@ -1,0 +1,46 @@
+.dailySummary {
+  display: grid;
+  grid-template-columns: 1.25fr 1fr;
+  gap: 18px;
+  align-items: stretch;
+  margin: 10px 0 20px;
+}
+
+.dailySummaryImage {
+  width: 100%;
+  height: 320px;
+  object-fit: cover;
+}
+
+.dailySummaryContent {
+  background: var(--card);
+  padding: 22px;
+  display: grid;
+  align-content: center;
+  gap: 12px;
+}
+
+.dailySummaryKicker {
+  margin: 0;
+  font-family: "Libre Baskerville", Georgia, serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+.dailySummaryText {
+  margin: 0;
+  font-size: 1.2rem;
+  line-height: 1.25;
+}
+
+@media (max-width: 980px) {
+  .dailySummary {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 680px) {
+  .dailySummaryImage {
+    height: 230px;
+  }
+}
